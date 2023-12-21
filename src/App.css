@@ -1,38 +1,88 @@
+body {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient-anim 15s ease infinite;
+  height: 100%;
+}
+
+@keyframes gradient-anim {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+
 .App {
   text-align: center;
+  width: 90%;
+  max-width: 480px;
+  display: grid;
+  gap: 30px;
+  box-shadow: 0 0 5px var(--shadow-1), 0 5px 10px var(--shadow-2);
+  position: relative;
+  overflow: hidden;
+  background: var(--white);
+  padding: 30px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, var(--blue), var(--green));
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1 {
+  color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+label {
+  margin-right: 10px;
+  display: block;
+  margin-bottom: 10px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+select,
+input {
+  padding: 8px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  background: linear-gradient(135deg, var(--blue), var(--green));
+  color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+
+select:hover {
+  border-color: #888;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+input:hover {
+  border-color: #585757;
+}
+
+
+option {
+  padding: 5px;
+  font-size: 14px;
+}
+
+
+.Container {
+  background: linear-gradient(135deg, var(--blue), var(--green));
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.ConversionResult {
+  font-size: 15px;
+  font-weight: bold;
+  
 }
