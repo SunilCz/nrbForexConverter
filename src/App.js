@@ -1,7 +1,10 @@
+//App.js
 import React, { useState, useEffect } from 'react';
 import Header from './header/Header';
 import ForexConverter from './components/ForexConverter';
+import ForexTable from './components/ForexTable';
 import forexApi from './api/forexApi';
+import DateSelector from './components/DateSelector';
 import './App.css';
 
 function App() {
@@ -10,20 +13,22 @@ function App() {
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [conversionAmount, setConversionAmount] = useState(1);
   const [convertedAmount, setConvertedAmount] = useState(null);
+  const [fromDate, setFromDate] = useState(new Date());
+  const [toDate, setToDate] = useState(new Date());
 
   useEffect(() => {
     // Fetch Forex Data
     const fetchData = async () => {
       try {
-        const data = await forexApi.getForexData(selectedDate);
+        const data = await forexApi.getForexData(selectedDate, toDate); // Change endDate to toDate
         setForexData(data);
       } catch (error) {
         console.error('Error fetching Forex data:', error);
       }
     };
-
+  
     fetchData();
-  }, [selectedDate]);
+  }, [selectedDate, toDate]);
 
   const handleDestinationCurrencyChange = (event) => {
     setDestinationCurrency(event.target.value);
@@ -54,6 +59,7 @@ function App() {
           conversionAmount={conversionAmount}
           handleAmountChange={handleAmountChange}
           onConversionResult={handleConversionResult}
+          toDate={toDate}
         />
       </div>
       {/* Conversion Result */}
@@ -66,7 +72,14 @@ function App() {
           <p>Buy Rate: {convertedAmount.buyRate}</p>
           <p>Sell Rate: {convertedAmount.sellRate}</p>
         </div>
+        
       )}
+      <div className="DateSelectors">
+  <DateSelector label="From" selectedDate={fromDate} onDateChange={setFromDate} />
+  <DateSelector label="To" selectedDate={toDate} onDateChange={setToDate} />
+</div>
+<ForexTable fromDate={fromDate} toDate={toDate} />
+      
     </div>
   );
 }

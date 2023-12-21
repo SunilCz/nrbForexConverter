@@ -86,3 +86,8 @@ option {
   font-weight: bold;
   
 }
+.DateSelectors {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
