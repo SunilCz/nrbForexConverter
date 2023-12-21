@@ -1,3 +1,4 @@
+//src/api/forexApi.js
 import formatDate from "../utils/formatDate";
 const API_URL = 'https://www.nrb.org.np/api/forex/v1/rates';
 
