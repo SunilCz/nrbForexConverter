@@ -1,5 +1,10 @@
 # Getting Started with Create React App
 
+## Project Link
+
+Check out the live project [here](https://nrb-forex-converter.vercel.app/).
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
