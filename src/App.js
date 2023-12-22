@@ -48,8 +48,8 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
-      <div className="Container">
+      <Header title="Nepali Rupees to Other Currencies Converter" />
+      <div className="LeftContainer">
         <ForexConverter
           forexData={forexData}
           destinationCurrency={destinationCurrency}
@@ -61,25 +61,30 @@ function App() {
           onConversionResult={handleConversionResult}
           toDate={toDate}
         />
+        {convertedAmount && (
+          <div className="ConversionResult">
+            <h2>Converted Result:</h2>
+            <p>
+              {conversionAmount} NPR is approximately {convertedAmount.amount} {destinationCurrency}
+            </p>
+            <p>Buy Rate: {convertedAmount.buyRate}</p>
+            <p>Sell Rate: {convertedAmount.sellRate}</p>
+          </div>
+        )}
       </div>
-      {/* Conversion Result */}
-      {convertedAmount && (
-        <div className="ConversionResult">
-          <h2>Converted Result:</h2>
-          <p>
-            {conversionAmount} NPR is approximately {convertedAmount.amount} {destinationCurrency}
-          </p>
-          <p>Buy Rate: {convertedAmount.buyRate}</p>
-          <p>Sell Rate: {convertedAmount.sellRate}</p>
+
+      <Header title="Forex Table" />
+      <div className="RightContainer">
+        <div className="DateSelectors">
+          <div className="DateSelector1">
+            <DateSelector label="From" selectedDate={fromDate} onDateChange={setFromDate} />
+          </div>
+          <div className="DateSelector2">
+            <DateSelector label="To" selectedDate={toDate} onDateChange={setToDate} />
+          </div>
         </div>
-        
-      )}
-      <div className="DateSelectors">
-  <DateSelector label="From" selectedDate={fromDate} onDateChange={setFromDate} />
-  <DateSelector label="To" selectedDate={toDate} onDateChange={setToDate} />
-</div>
-<ForexTable fromDate={fromDate} toDate={toDate} />
-      
+        <ForexTable fromDate={fromDate} toDate={toDate} />
+      </div>
     </div>
   );
 }
